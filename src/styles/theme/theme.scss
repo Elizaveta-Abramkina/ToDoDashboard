@@ -1,0 +1,19 @@
+$red: red;
+
+@mixin themeLight {
+  .app{background-color: $red;}
+
+}
+@mixin themeDark {
+  .app{background-color: $red;}
+
+}
+html[data-theme = "light"] {
+  @include themeLight
+}
+
+html[data-theme = "dark"] {
+  @include themeDark;
+}
+
+
