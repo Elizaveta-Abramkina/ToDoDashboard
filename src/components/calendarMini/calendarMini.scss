@@ -1,0 +1,105 @@
+@import 'src/styles/variables';
+
+.arrow {
+  border: solid $colorLight;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+}
+
+.calendar-mini {
+  background-color: var(--cards-color);
+  display: flex;
+  flex-direction: column;
+  max-width: 400px ;
+  padding: 28px;
+  border-radius: 20px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 18px 40px 18px;
+}
+
+.calendar-title-month {
+  @include titleText;
+  font-size: 30px;
+
+}
+
+.calendar-buttons {
+  width: 74px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & button {
+    background-color: $colorAccent;
+    border: none;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+  }
+}
+.calendar-form {
+  flex-wrap: wrap;
+    display: flex;
+}
+
+.calendar-week-days-form {
+  display: flex;
+}
+
+.calendar-week-days {
+  @include titleText;
+  font-size: 14px;
+  font-weight: 600;
+  width: 36px;
+  height: 36px;
+  margin: 0 5px 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin calendarText {
+  font-weight: 600;
+  font-size: 14px;
+  font-family: $fontSF;
+}
+.calendar-prev-days {
+  @include calendarText;
+  color:$colorMoreLight;
+  opacity: 40%;
+  width: 36px;
+  height: 36px;
+  margin: 0 5px 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.calendar-days {
+  @include calendarText;
+  color: $colorSimpleText;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px 0 5px;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+}
+
+.today {
+  background-color: $colorAccent;
+  color: $colorLight;
+}

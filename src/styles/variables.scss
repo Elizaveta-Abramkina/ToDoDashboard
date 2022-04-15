@@ -1,0 +1,33 @@
+$border: 1px solid #DBDBDB;
+$colorAccent: #FFA500;
+$colorText: #0D062D;
+$colorSimpleText: #787486;
+$colorLight: #fff;
+$colorMoreLight: #65676D;
+$fontSF: 'SF Pro Text', sans-serif;
+
+@mixin projectLogoText {
+  font: {
+    family: 'Nunito', sans-serif;
+    size: 24px;
+    weight: 600;
+  }
+  color: var(--project-text-color)
+}
+
+@mixin titleText {
+  font: {
+    family: 'SF Pro Text', sans-serif;
+    weight: 700;
+  }
+  color: var(--project-text-color)
+}
+
+@mixin menuInputText {
+  font: {
+    family: 'Nunito', sans-serif;
+    size: 16px;
+    weight: 500;
+  }
+}
+

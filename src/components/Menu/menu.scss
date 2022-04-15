@@ -1,0 +1,31 @@
+@import 'src/styles/variables';
+
+.menu-container {
+  padding: 10px;
+
+  width: 250px;
+  border-right: $border;
+}
+
+.menu-input {
+  display: flex;
+  align-items: center;
+  margin-top: 38px;
+  color: $colorSimpleText;
+  fill: $colorSimpleText;
+  stroke: $colorSimpleText;
+  transition: 0.2s;
+
+
+  &:hover {
+    color: $colorAccent;
+    fill: $colorAccent;
+    stroke: $colorAccent;
+    transform: translate(15px, 0px) ;
+  }
+}
+
+.menu-text {
+  @include menuInputText;
+  margin-left: 8px;
+}
