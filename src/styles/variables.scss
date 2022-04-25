@@ -31,3 +31,10 @@ $fontSF: 'SF Pro Text', sans-serif;
   }
 }
 
+@mixin style-cards {
+  background-color: var(--cards-color);
+  padding: 28px;
+  border-radius: 20px;
+  margin: 8px;
+}
+

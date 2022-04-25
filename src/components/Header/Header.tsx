@@ -1,7 +1,7 @@
 import React from 'react';
 import LogoIcon from '../../assets/icons/LogoIcon';
 import Toggle from "../Toggle/Toggle";
-import './header.scss'
+import './Header.scss'
 
 
 const Header = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import TasksIcon from "../../assets/icons/TasksIcon";
 import HomeIcon from '../../assets/icons/HomeIcon';
-import './menu.scss'
+import './Menu.scss'
 
 const Menu = () => {
 

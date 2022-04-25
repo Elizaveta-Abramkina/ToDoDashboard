@@ -3,8 +3,8 @@
 .arrow {
   border: solid $colorLight;
   border-width: 0 2px 2px 0;
-  display: inline-block;
   padding: 3px;
+  display: inline-block;
 }
 
 .right {
@@ -15,13 +15,45 @@
   transform: rotate(135deg);
 }
 
+.calendar-buttons {
+  width: 74px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-button {
+  background-color: $colorAccent;
+  border: none;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+
+  &:hover.button-left {
+    box-shadow: 5px 0 8px var(--shadow-color);
+    transform: translate(-5px, 0);
+
+  }
+
+  &:hover.button-right {
+    &:hover {
+      box-shadow: -5px 0 8px var(--shadow-color);
+      transform: translate(5px, 0);
+
+    }
+  }
+}
+
 .calendar-mini {
-  background-color: var(--cards-color);
+  @include style-cards;
   display: flex;
   flex-direction: column;
-  max-width: 400px ;
-  padding: 28px;
-  border-radius: 20px;
+  max-width: 400px;
+
 }
 
 .calendar-header {
@@ -33,26 +65,11 @@
 .calendar-title-month {
   @include titleText;
   font-size: 30px;
-
 }
 
-.calendar-buttons {
-  width: 74px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  & button {
-    background-color: $colorAccent;
-    border: none;
-    width: 27px;
-    height: 27px;
-    border-radius: 50%;
-  }
-}
 .calendar-form {
   flex-wrap: wrap;
-    display: flex;
+  display: flex;
 }
 
 .calendar-week-days-form {
@@ -76,9 +93,10 @@
   font-size: 14px;
   font-family: $fontSF;
 }
+
 .calendar-prev-days {
   @include calendarText;
-  color:$colorMoreLight;
+  color: $colorMoreLight;
   opacity: 40%;
   width: 36px;
   height: 36px;
@@ -87,6 +105,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .calendar-days {
   @include calendarText;
   color: $colorSimpleText;

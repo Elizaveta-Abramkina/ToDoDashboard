@@ -1,21 +1,17 @@
 import React, {useState} from 'react';
 import {DateTime} from 'luxon'
-import './calendarMini.scss'
+import './CalendarMini.scss'
+
+
+
+const arrayWeekDays = new Array(7).fill(null).map((i, ind)=>{
+    const valueWeekDay = DateTime.fromObject({weekday:ind+1}).toLocaleString({weekday:"short"})
+    return  <div className='calendar-week-days' key={Math.random()}>{valueWeekDay}</div>
+})
 
 const CalendarMini = () => {
 
     const [date, setDate] = useState(DateTime.now())
-
-
-    const arrayWeekDays = [
-        <div className='calendar-week-days' key={Math.random()}>MON</div>,
-        <div className='calendar-week-days' key={Math.random()}>TUE</div>,
-        <div className='calendar-week-days' key={Math.random()}>WED</div>,
-        <div className='calendar-week-days' key={Math.random()}>THU</div>,
-        <div className='calendar-week-days' key={Math.random()}>FRI</div>,
-        <div className='calendar-week-days' key={Math.random()}>SAT</div>,
-        <div className='calendar-week-days' key={Math.random()}>SUN</div>,
-    ];
 
     const firstDayMonth = date.startOf('month').toLocaleString({day: 'numeric'})
     const lastDayMonth = date.endOf('month').toLocaleString({day: 'numeric'})
@@ -80,10 +76,10 @@ const CalendarMini = () => {
             <div className='calendar-header'>
                 <h3 className='calendar-title-month'>{date.toLocaleString({month: 'short', year: 'numeric'})}</h3>
                 <div className='calendar-buttons'>
-                    <button onClick={() => {
+                    <button className='calendar-button button-left' onClick={() => {
                         getPrevMonth()
                     }}><i className='arrow left'></i></button>
-                    <button onClick={() => {
+                    <button className='calendar-button button-right' onClick={() => {
                         getNextMonth()
                     }}><i className='arrow right'></i></button>
                 </div>

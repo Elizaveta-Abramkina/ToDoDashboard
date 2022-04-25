@@ -1,0 +1,15 @@
+@import "src/styles/variables";
+
+.add-task-input {
+  width: 100%;
+  background: none;
+  color: $colorSimpleText;
+  border-bottom: $border;
+  border-top:none;
+  border-left: none;
+  border-right: none;
+}
+
+.add-task-input:focus {
+outline: none;
+}

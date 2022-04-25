@@ -1,8 +1,9 @@
 import React from 'react';
 import Header from "../components/Header/Header";
 import Menu from "../components/Menu/Menu";
-import CalendarMini from "../components/calendarMini/calendarMini";
+import CalendarMini from "../components/calendarMini/CalendarMini";
 import './dashbourd.scss'
+import TasksList from "../components/TasksList/TasksList";
 
 
 const Dashboard = () => {
@@ -12,6 +13,7 @@ const Dashboard = () => {
             <div className="layout">
                 <Menu/>
                 <CalendarMini/>
+                <TasksList/>
             </div>
 
         </div>
