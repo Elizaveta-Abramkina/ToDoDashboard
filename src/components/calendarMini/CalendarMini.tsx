@@ -65,7 +65,6 @@ const CalendarMini = () => {
             } else {
                 arrayDaysMonth.push(<div key={i} className="calendar-days">{i}</div>)
             }
-
         }
         arrayDaysMonth.push(createNextDays())
         return arrayDaysMonth
