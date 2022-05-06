@@ -7,9 +7,10 @@ export interface TasksState {
 }
 
 export interface ITask {
-    task: string,
-    done: boolean,
-    date: string,
+    id: number | null,
+    task: string | null,
+    done: boolean | null,
+    date: string | null,
 }
 
 const initialState = [] as ITask[]
@@ -20,9 +21,10 @@ export const tasksSlice = createSlice({
         reducers: {
             addTask: (state:ITask[], action:PayloadAction<ITask>) => {
                 const newTask = {
-                    date: DateTime.now().toLocaleString({year:'numeric', month:'short', day:'numeric'}),
+                    id: Math.random(),
+                    date:DateTime.now().toLocaleString({year:'numeric', month:'short', day:'numeric'}),
                     task: action.payload.task,
-                    done: false
+                    done: false,
                 }
                 state.push(newTask)
             }

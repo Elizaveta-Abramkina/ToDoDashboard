@@ -5,7 +5,7 @@ import './Toggle.scss'
 
 
 const Toggle = () => {
-    const {theme, setTheme} =useTheme()
+    const {setTheme} =useTheme()
     const [input, setInput] = useState(true)
 
     const handleChangeThemeL = ()=>{

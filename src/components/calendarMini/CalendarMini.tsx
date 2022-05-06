@@ -12,7 +12,6 @@ const arrayWeekDays = new Array(7).fill(null).map((i, ind)=>{
 const CalendarMini = () => {
 
     const [date, setDate] = useState(DateTime.now())
-
     const firstDayMonth = date.startOf('month').toLocaleString({day: 'numeric'})
     const lastDayMonth = date.endOf('month').toLocaleString({day: 'numeric'})
 
@@ -25,7 +24,7 @@ const CalendarMini = () => {
     }
 
     const createPrevDays = () => {
-        let arrayDaysAll = [];
+        const arrayDaysAll = [];
 
         const lastDayPrevMonth = date.minus({month: 1}).endOf('month').toLocaleString({day: 'numeric'});
         const firstDayWeek = date.startOf('month').weekday
@@ -41,7 +40,7 @@ const CalendarMini = () => {
     }
 
     const createNextDays = () => {
-        let arrayDaysAll = [];
+        const arrayDaysAll = [];
 
         const lastDayWeek = date.endOf('month').weekday
 
@@ -56,7 +55,7 @@ const CalendarMini = () => {
     }
 
     const createDays = (now:DateTime) => {
-        let arrayDaysMonth = [];
+        const arrayDaysMonth = [];
         arrayDaysMonth.push(createPrevDays())
         const todayDay = date.day
         for (let i = +firstDayMonth; i <= +lastDayMonth; i++) {

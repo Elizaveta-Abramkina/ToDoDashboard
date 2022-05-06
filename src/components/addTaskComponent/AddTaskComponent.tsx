@@ -1,9 +1,8 @@
 import React, {FormEvent, useState} from 'react';
 import './AddTaskComponent.scss'
-import {DateTime} from "luxon";
 import {addTask} from "../../redux/slices/tasksSlice";
 import {useAppDispatch} from "../../redux/hooks";
-
+import { collection, addDoc } from "firebase/firestore";
 
 const AddTaskComponent = () => {
 
@@ -16,13 +15,13 @@ const AddTaskComponent = () => {
         setValue((prev)=> `${event.target.value}` )
     }
 
-
     const setTask = (e: FormEvent)=>{
         e.preventDefault()
         const newTask = {
+            id: null,
             task: text,
-            done:false,
-            date:DateTime.now().toLocaleString({year:'numeric', month:'short', day:'numeric'})
+            done: null,
+            date:null
         }
         dispatch(addTask(newTask))
         setValue('')

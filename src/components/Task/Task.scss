@@ -3,8 +3,9 @@
 .task {
   display: flex;
   border-bottom: $border;
+  margin: 20px 0 20px 0;
 }
 
 .task-text {
-
+  @include titleText;
 }

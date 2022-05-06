@@ -3,15 +3,19 @@ import './Task.scss'
 import {ITask} from "../../redux/slices/tasksSlice";
 
 
+interface IProps {
+    task: ITask,
+    key: number
+}
 
-
-
-const Task = ({task, done, date}:ITask) => {
+const Task = ({task}:IProps) => {
 
     return (
         <div className='task'>
-            <p className='task-text'>{task}</p>
-            <input className='task-input' type="checkbox"/>
+            <label htmlFor={task.id?.toString()}>
+            <p className='task-text'>{task.task}</p>
+            </label>
+            <input className='task-input' type="checkbox" name="task" id={task.id?.toString()}/>
         </div>
     );
 };
