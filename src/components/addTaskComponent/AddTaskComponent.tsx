@@ -2,17 +2,15 @@ import React, {FormEvent, useState} from 'react';
 import './AddTaskComponent.scss'
 import {addTask} from "../../redux/slices/tasksSlice";
 import {useAppDispatch} from "../../redux/hooks";
-import { collection, addDoc } from "firebase/firestore";
 
 const AddTaskComponent = () => {
 
-    const [text, setValue] =useState("")
-
+    const [text, setValue] =useState("New task...")
 
     const dispatch = useAppDispatch()
 
     const changeInputHandler: React.ChangeEventHandler < HTMLInputElement > = (event) => {
-        setValue((prev)=> `${event.target.value}` )
+        setValue(()=> `${event.target.value}` )
     }
 
     const setTask = (e: FormEvent)=>{
@@ -27,12 +25,21 @@ const AddTaskComponent = () => {
         setValue('')
     }
 
+    const handleFocus=() => {
+        setValue('')
+    }
+
+    const handleBlur = ()=>{
+        setValue('New task...')
+    }
+
+    const classText = ()=>(text === 'New task...' ? "add-task-input placeholder" : "add-task-input")
 
     return (
         <div>
             <form onSubmit={setTask} >
-                <input type="text" className="add-task-input" id="title" value={text} name="task"
-                       onChange={changeInputHandler} />
+                <input type="text" className={classText()} id="title" value={text} name="task"
+                       onChange={changeInputHandler} onFocus={handleFocus} onBlur={handleBlur} autoComplete='off'/>
             </form>
         </div>
     );

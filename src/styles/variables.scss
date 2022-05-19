@@ -23,12 +23,33 @@ $fontSF: 'SF Pro Text', sans-serif;
   color: var(--project-text-color)
 }
 
+@mixin titleText {
+  font: {
+    family: 'SF Pro Text', sans-serif;
+    weight: 700;
+  }
+  color: var(--project-text-color)
+}
+
 @mixin menuInputText {
   font: {
     family: 'Nunito', sans-serif;
     size: 16px;
     weight: 500;
   }
+}
+
+@mixin calendarText {
+  font-weight: 600;
+  font-size: 14px;
+  font-family: $fontSF;
+}
+
+@mixin grayText {
+  font-weight: 600;
+  font-size: 18px;
+  font-family: $fontSF;
+  color: $colorSimpleText;
 }
 
 @mixin style-cards {

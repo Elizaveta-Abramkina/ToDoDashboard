@@ -88,12 +88,6 @@
   align-items: center;
 }
 
-@mixin calendarText {
-  font-weight: 600;
-  font-size: 14px;
-  font-family: $fontSF;
-}
-
 .calendar-prev-days {
   @include calendarText;
   color: $colorMoreLight;

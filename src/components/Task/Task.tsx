@@ -1,7 +1,7 @@
 import React from 'react';
 import './Task.scss'
 import {ITask} from "../../redux/slices/tasksSlice";
-
+import CheckMark from "../../assets/icons/CheckMark";
 
 interface IProps {
     task: ITask,
@@ -12,12 +12,14 @@ const Task = ({task}:IProps) => {
 
     return (
         <div className='task'>
-            <label htmlFor={task.id?.toString()}>
-            <p className='task-text'>{task.task}</p>
+            <label className= 'label' htmlFor={task.id?.toString()}>
+                <input className='task-input' type="checkbox" name="task" id={task.id?.toString()}/>
+                <p className='task-text'>{task.task}</p>
+                <CheckMark/>
             </label>
-            <input className='task-input' type="checkbox" name="task" id={task.id?.toString()}/>
         </div>
     );
+
 };
 
 export default Task;
