@@ -21,7 +21,8 @@ const AddTaskComponent = () => {
             done: null,
             date:null
         }
-        dispatch(addTask(newTask))
+
+        dispatch(addTask(newTask, ))
         setValue('')
     }
 

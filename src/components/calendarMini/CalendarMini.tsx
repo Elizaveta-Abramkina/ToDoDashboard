@@ -1,19 +1,20 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import {DateTime} from 'luxon'
 import './CalendarMini.scss'
 
 
 
-const arrayWeekDays = new Array(7).fill(null).map((i, ind)=>{
-    const valueWeekDay = DateTime.fromObject({weekday:ind+1}).toLocaleString({weekday:"short"})
-    return  <div className='calendar-week-days' key={Math.random()}>{valueWeekDay}</div>
+const arrayWeekDays = new Array(7).fill(null).map((i, ind) => {
+    const valueWeekDay = DateTime.fromObject({weekday: ind + 1}).toLocaleString({weekday: "short"})
+    return <div className='calendar-week-days' key={Math.random()}>{valueWeekDay}</div>
 })
 
-const CalendarMini = () => {
+const CalendarMini  = () => {
 
     const [date, setDate] = useState(DateTime.now())
     const firstDayMonth = date.startOf('month').toLocaleString({day: 'numeric'})
     const lastDayMonth = date.endOf('month').toLocaleString({day: 'numeric'})
+    const [elDay, setElDay] = useState<HTMLDivElement | null>(null)
 
     const getNextMonth = () => {
         setDate(date.plus({month: 1}))
@@ -54,16 +55,37 @@ const CalendarMini = () => {
         return arrayDaysAll
     }
 
-    const createDays = (now:DateTime) => {
+    const handleClickDay = (event: React.MouseEvent ) :void=> {
+        const el = event.target as HTMLDivElement
+        console.log(el)
+        if (elDay === null) {
+            el.classList.add('selected')
+            setElDay(el)
+            return;
+        }
+        if(elDay !== el){
+            elDay.classList.remove('selected')
+            el.classList.add('selected')
+            setElDay(el)
+        }
+    }
+
+    const addClassDays = (i: number, now: DateTime) => {
+        const todayDay = date.day
+        const dayElement = (classNameDay: string) => <div key={i} className={`calendar-days ${classNameDay}`}>{i}</div>
+
+        if (i === todayDay && now.month === DateTime.now().month && now.year === DateTime.now().year) {
+            return dayElement('today')
+        } else {
+            return dayElement('')
+        }
+    }
+
+    const createDays = (now: DateTime) => {
         const arrayDaysMonth = [];
         arrayDaysMonth.push(createPrevDays())
-        const todayDay = date.day
         for (let i = +firstDayMonth; i <= +lastDayMonth; i++) {
-            if (i === todayDay && now.month === DateTime.now().month && now.year === DateTime.now().year) {
-                arrayDaysMonth.push(<div key={i} className="calendar-days today">{i}</div>)
-            } else {
-                arrayDaysMonth.push(<div key={i} className="calendar-days">{i}</div>)
-            }
+            arrayDaysMonth.push(addClassDays(i, now))
         }
         arrayDaysMonth.push(createNextDays())
         return arrayDaysMonth
@@ -84,7 +106,7 @@ const CalendarMini = () => {
             </div>
             <div className='calendar-form'>
                 <div className='calendar-week-days-form'>{arrayWeekDays}</div>
-                <div className='calendar-form'>{createDays(date)}</div>
+                <div className='calendar-form' onClick={handleClickDay}>{createDays(date)}</div>
             </div>
         </div>
     );

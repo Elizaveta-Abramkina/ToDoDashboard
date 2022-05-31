@@ -1,6 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
 import {RootState} from "../store/store";
-import {DateTime} from "luxon";
 
 export interface TasksState {
     tasks: ITask[]
@@ -22,7 +21,7 @@ export const tasksSlice = createSlice({
             addTask: (state:ITask[], action:PayloadAction<ITask>) => {
                 const newTask = {
                     id: Math.random(),
-                    date:DateTime.now().toLocaleString({year:'numeric', month:'short', day:'numeric'}),
+                    date:action.payload.date,
                     task: action.payload.task,
                     done: false,
                 }
