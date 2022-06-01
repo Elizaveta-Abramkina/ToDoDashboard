@@ -1,10 +1,14 @@
+@import "variables";
 @import "theme/theme";
+
 * {
   box-sizing: border-box;
 }
+
 p, h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
+
 body {
   background-color: var(--backgroand-color);
   transition: background-color 0.5s;
@@ -12,4 +16,32 @@ body {
 
 .app {
   padding: 15px;
+}
+
+.app::after {
+  content: '';
+  top: 112px;
+  position: absolute;
+  border-bottom: $border;
+  width: 97vw;
+  animation: line-horizontal 1.5s;
+}
+
+.app::before {
+  content: '';
+  left: 221px;
+  position: absolute;
+  border-left: $border;
+  height: 97vh;
+  animation: line-vertical 1.5s;
+}
+
+@keyframes line-vertical {
+  from {top: -100%}
+  to {top: 0}
+}
+
+@keyframes line-horizontal {
+  from {left: -100%}
+  to {left: 0}
 }
