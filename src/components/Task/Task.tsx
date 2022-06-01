@@ -1,6 +1,6 @@
 import React from 'react';
 import './Task.scss'
-import {ITask} from "../../redux/slices/tasksSlice";
+import {ITask} from "../../store/tasks/taskSlice";
 import CheckMark from "../../assets/icons/CheckMark";
 
 interface IProps {

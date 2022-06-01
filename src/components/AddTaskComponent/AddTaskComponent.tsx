@@ -1,7 +1,8 @@
 import React, {FormEvent, useState} from 'react';
 import './AddTaskComponent.scss'
-import {addTask} from "../../redux/slices/tasksSlice";
-import {useAppDispatch} from "../../redux/hooks";
+import { addTask } from '../../store/tasks/taskSlice';
+import {useAppDispatch} from "../../store/hooks";
+
 
 const AddTaskComponent = () => {
 
@@ -16,13 +17,13 @@ const AddTaskComponent = () => {
     const setTask = (e: FormEvent)=>{
         e.preventDefault()
         const newTask = {
-            id: null,
+            id: Math.random(),
             task: text,
-            done: null,
-            date:null
+            done: false,
+            date: null
         }
 
-        dispatch(addTask(newTask, ))
+        dispatch(addTask(newTask))
         setValue('')
     }
 

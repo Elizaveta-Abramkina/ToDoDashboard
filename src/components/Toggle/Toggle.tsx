@@ -1,30 +1,38 @@
 import React, {useEffect, useState} from 'react';
-import {useTheme} from "../../styles/useTheme";
 import './Toggle.scss'
+
+import { changeTheme } from '../../store/theme/themeSlice';
+import { useAppDispatch } from '../../store/hooks';
 
 
 
 const Toggle = () => {
-    const { theme,setTheme} =useTheme()
     const [input, setInput] = useState(true)
+    const dispatch = useAppDispatch()
+
+    useEffect(()=>{
+       const saveTheme= localStorage.getItem('theme')
+        if(saveTheme==='dark'){
+            setInput(false)
+        }
+        if(saveTheme){
+            dispatch(changeTheme(saveTheme))
+        }
+    })
+
+    const addTheme = (value:string)=>{
+        dispatch(changeTheme(value))
+        localStorage.setItem('theme', value)
+    }
 
     const handleChangeTheme = ()=>{
         setInput(!input)
         if(!input) {
-            setTheme('light')
-            localStorage.setItem('theme','light' )
+            addTheme('light')
         } else {
-            setTheme('dark')
-            localStorage.setItem('theme','dark' )
+            addTheme('dark')
         }
     }
-
-    useEffect(()=>{
-        const themeValue = localStorage.getItem('theme')
-        if(themeValue){
-        setTheme(themeValue)
-       }
-    })
 
     return (
         <label className='toggle-label'>

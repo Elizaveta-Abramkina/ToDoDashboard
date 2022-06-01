@@ -2,15 +2,17 @@ import React, {useState} from 'react';
 import './TasksList.scss'
 import Task from "../Task/Task";
 import AddTaskComponent from "../AddTaskComponent/AddTaskComponent";
-import {ITask} from "../../redux/slices/tasksSlice";
-import {useAppSelector } from '../../redux/hooks';
+import {ITask} from "../../store/tasks/taskSlice";
+import {IStore} from "../../store/store";
+import {useAppDispatch, useAppSelector} from "../../store/hooks";
+
 
 const TasksList= () => {
 
     const [visible, setVisible] = useState(false)
     const [date, setDate] = useState('today')
 
-    const tasks = useAppSelector(state =>state.tasks)
+    const tasks = useAppSelector((state)=>state.tasks)
 
     return (
         <div className='tasks-list'>
