@@ -53,14 +53,10 @@ const DraggableBox: FC<IDraggableBox> = ({id, left, top, children}: IDraggableBo
     // }
 
     // return isDragging ?
-    //     (
-    //         <div className='prevBox'>
-    //             <div style={getItemStyles(initialOffset, currentOffset)}>
+    //     (<div ref={prevBox} className='prevBox'>
     //                 {children}
-    //             </div>
-    //         </div>
-    //     ) :
-      return (
+    //         </div>) :
+       return (
             <div ref={drag} className='box' style={getStylesDrag(left, top)}>
                 {children}
             </div>

@@ -119,5 +119,5 @@
 .selected {
   border: 2px solid $colorAccent;
   border-radius: 50%;
-  color: $colorLight;
+  color: var(--project-text-color);
 }
