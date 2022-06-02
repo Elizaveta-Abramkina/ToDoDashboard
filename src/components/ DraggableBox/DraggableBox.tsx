@@ -1,7 +1,7 @@
 import React, {CSSProperties, FC, ReactNode} from 'react';
 import {useDrag, useDragLayer} from "react-dnd";
 import './DraggableBox.scss'
-import {ItemTypes} from "../Dashbourd/dragAndDrop/dragAndDrop";
+import {ItemTypes} from "../../pages/Dashbourd/dragAndDrop/dragAndDrop";
 
 
 interface IDraggableBox {
@@ -26,7 +26,6 @@ const DraggableBox: FC<IDraggableBox> = ({id, left, top, children}: IDraggableBo
             position: 'absolute',
             transform: `translate(${left}px, ${top}px)`,
             display: isDragging ? 'none' : '',
-
         }
     }
 
@@ -56,11 +55,13 @@ const DraggableBox: FC<IDraggableBox> = ({id, left, top, children}: IDraggableBo
     //     (<div ref={prevBox} className='prevBox'>
     //                 {children}
     //         </div>) :
-       return (
+    return (
+
             <div ref={drag} className='box' style={getStylesDrag(left, top)}>
                 {children}
             </div>
-        );
+
+    );
 };
 
 export default DraggableBox;

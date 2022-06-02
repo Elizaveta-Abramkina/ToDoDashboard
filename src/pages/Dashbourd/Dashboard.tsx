@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import './dashbourd.scss'
+import './Dashbourd.scss'
 import {useDrop} from "react-dnd";
-import DraggableBox from "../ DraggableBox/DraggableBox";
-import CalendarMini from '../calendarMini/CalendarMini';
+import DraggableBox from "../../components/ DraggableBox/DraggableBox";
+import CalendarMini from '../../components/calendarMini/CalendarMini';
 import {ItemTypes} from "./dragAndDrop/dragAndDrop";
-import TasksList from '../TasksList/TasksList';
+import TasksList from '../../components/TasksList/TasksList';
 
 interface IBox {
     [key: string]: { top: number; left: number }

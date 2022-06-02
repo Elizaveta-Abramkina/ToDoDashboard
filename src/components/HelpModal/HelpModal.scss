@@ -1,0 +1,27 @@
+
+.helper-wrapper {
+
+}
+.helper {
+  position: absolute;
+  display: flex;
+  right: 100%;
+  margin: 0 10px;
+  z-index: 100;
+}
+
+.helper-text {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  min-height: 60px;
+  min-width: 150px;
+  background: #FFA500;
+  border-radius: 12px;
+}
+
+.helper-arrow {
+  margin-left: 10px;
+  width: 100px;
+  height: 100px;
+}

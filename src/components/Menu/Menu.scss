@@ -15,12 +15,20 @@
   transition: 0.2s;
 
 
+
   &:hover {
     color: $colorAccent;
     fill: $colorAccent;
     stroke: $colorAccent;
     transform: translate(15px, 0px) ;
   }
+}
+
+.activeLink .menu-input {
+  color: $colorAccent;
+  fill: $colorAccent;
+  stroke: $colorAccent;
+  transform: translate(15px, 0px) ;
 }
 
 .menu-text {

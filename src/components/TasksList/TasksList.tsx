@@ -5,6 +5,7 @@ import AddTaskComponent from "../AddTaskComponent/AddTaskComponent";
 import {ITask} from "../../store/tasks/taskSlice";
 import {IStore} from "../../store/store";
 import {useAppDispatch, useAppSelector} from "../../store/hooks";
+import HelpModal from "../HelpModal/HelpModal";
 
 
 const TasksList= () => {
@@ -15,6 +16,7 @@ const TasksList= () => {
     const tasks = useAppSelector((state)=>state.tasks)
 
     return (
+        <HelpModal>
         <div className='tasks-list'>
             <div className='tasks-header'>
                 <h3 className='tasks-title'>My tasks for {date}</h3>
@@ -24,6 +26,7 @@ const TasksList= () => {
             {visible ? <AddTaskComponent /> : null}
             {tasks.map((task: ITask) =><Task  task={task} key={Math.random()}/>)}
         </div>
+        </HelpModal>
     );
 };
 

@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, { useState} from 'react';
 import {DateTime} from 'luxon'
 import './CalendarMini.scss'
 
@@ -55,20 +55,20 @@ const CalendarMini  = () => {
         return arrayDaysAll
     }
 
-    const handleClickDay = (event: React.MouseEvent ) :void=> {
-        const el = event.target as HTMLDivElement
-        console.log(el)
-        if (elDay === null) {
-            el.classList.add('selected')
-            setElDay(el)
-            return;
-        }
-        if(elDay !== el){
-            elDay.classList.remove('selected')
-            el.classList.add('selected')
-            setElDay(el)
-        }
-    }
+    // const handleClickDay = (event: React.MouseEvent ) :void=> {
+    //     const el = event.target as HTMLDivElement
+    //     console.log(el)
+    //     if (elDay === null) {
+    //         el.classList.add('selected')
+    //         setElDay(el)
+    //         return;
+    //     }
+    //     if(elDay !== el){
+    //         elDay.classList.remove('selected')
+    //         el.classList.add('selected')
+    //         setElDay(el)
+    //     }
+    // }
 
     const addClassDays = (i: number, now: DateTime) => {
         const todayDay = date.day
@@ -106,7 +106,8 @@ const CalendarMini  = () => {
             </div>
             <div className='calendar-form'>
                 <div className='calendar-week-days-form'>{arrayWeekDays}</div>
-                <div className='calendar-form' onClick={handleClickDay}>{createDays(date)}</div>
+                {/*<div className='calendar-form' onClick={handleClickDay}>{createDays(date)}</div>*/}
+                <div className='calendar-form' >{createDays(date)}</div>
             </div>
         </div>
     );

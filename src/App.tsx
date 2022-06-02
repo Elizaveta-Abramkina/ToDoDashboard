@@ -1,9 +1,12 @@
 import React, {useEffect} from 'react'
-import Dashboard from "./components/Dashbourd/Dashboard";
 import './styles/app.scss';
-import Home from "./pages/Home/Home";
 import {useTheme} from "./styles/useTheme";
 import {useAppSelector} from "./store/hooks";
+import { Route, Routes} from "react-router-dom";
+import Layout from "./pages/Layout";
+import Dashboard from "./pages/Dashbourd/Dashboard";
+import Tasks from './pages/Tasks/Tasks';
+
 
 
 
@@ -17,7 +20,12 @@ function App() {
 
     return (
         <div className='app'>
-            <Home/>
+                <Routes>
+                    <Route path='/' element={<Layout/>}>
+                        <Route index element={<Dashboard/>}/>
+                        <Route path='/tasks' element={<Tasks/>}/>
+                    </Route>
+                </Routes>
         </div>
     );
 }
