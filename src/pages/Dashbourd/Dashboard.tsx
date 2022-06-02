@@ -5,6 +5,7 @@ import DraggableBox from "../../components/ DraggableBox/DraggableBox";
 import CalendarMini from '../../components/calendarMini/CalendarMini';
 import {ItemTypes} from "./dragAndDrop/dragAndDrop";
 import TasksList from '../../components/TasksList/TasksList';
+import useHelper from "../../hooks/helper";
 
 interface IBox {
     [key: string]: { top: number; left: number }
@@ -44,13 +45,17 @@ const Dashboard = () => {
         }), [moveBox]
     )
 
+    useHelper()
+
     return (
-            <div ref={drop} className="layout">
-                <DraggableBox id='tasksList' left={boxes.tasksList.left} top={boxes.tasksList.top}>
-                    <TasksList/></DraggableBox>
-                <DraggableBox id='calendar' left={boxes.calendar.left}
-                              top={boxes.calendar.top}><CalendarMini/></DraggableBox>
-            </div>
+        <div ref={drop} className="layout">
+            <DraggableBox id='tasksList' left={boxes.tasksList.left} top={boxes.tasksList.top}>
+                <TasksList/>
+            </DraggableBox>
+            <DraggableBox id='calendar' left={boxes.calendar.left} top={boxes.calendar.top}>
+                <CalendarMini/>
+            </DraggableBox>
+        </div>
     );
 };
 
