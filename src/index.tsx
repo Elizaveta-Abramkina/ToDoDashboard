@@ -9,15 +9,15 @@ import {BrowserRouter} from 'react-router-dom';
 
 
 ReactDOM.render(
-    <Provider store={store}>
-        <DndProvider backend={HTML5Backend}>
-            <BrowserRouter>
-                <App/>
-            </BrowserRouter>
-        </DndProvider>
+  <Provider store={store}>
+    <DndProvider backend={HTML5Backend}>
+      <BrowserRouter>
+        <App/>
+      </BrowserRouter>
+    </DndProvider>
 
-    </Provider>,
-    document.getElementById('root')
+  </Provider>,
+  document.getElementById('root')
 )
 ;
 
