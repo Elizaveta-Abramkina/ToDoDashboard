@@ -1,0 +1,20 @@
+@import "src/styles/variables";
+
+.add-task-input {
+  width: 100%;
+  background: none;
+  border-bottom: $border;
+  border-top:none;
+  border-left: none;
+  border-right: none;
+  font-size: 18px;
+  @include grayText;
+}
+
+.placeholder {
+ opacity: 40%;
+}
+
+.add-task-input:focus {
+outline: none;
+}

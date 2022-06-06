@@ -1,0 +1,44 @@
+@import 'src/styles/variables';
+
+.label {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  border-bottom: $border;
+  align-items: center;
+  height: 60px;
+  position: relative;
+}
+
+.task-input:checked {
+  ~.task-text::after {
+    content:'';
+    width: 100%;
+    left: -5px;
+    top: 50%;
+    padding: 0 5px 0 5px;
+    border-bottom: 2px solid $colorSimpleText;
+    position: absolute;
+  }
+  ~.task-text {
+    opacity: 40%;
+  }
+  ~svg  {
+  fill: $colorAccent;
+  stroke: red;
+  >.circle {
+    stroke: $colorAccent;
+  }
+  >.path{
+    stroke: $colorLight;
+  }
+}}
+
+.task-input{
+  display: none;
+}
+
+.task-text {
+  @include grayText;
+  position: relative;
+}

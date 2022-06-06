@@ -1,19 +1,17 @@
-$red: red;
-
-@mixin themeLight {
-  .app{background-color: $red;}
-
-}
-@mixin themeDark {
-  .app{background-color: $red;}
-
-}
 html[data-theme = "light"] {
-  @include themeLight
+  --backgroand-color: #fff;
+  --cards-color:#F5F5F5;
+  --project-text-color: #0D062D;
+  --toogle-round: #fff;
+  --shadow-color: #24263A;
 }
 
 html[data-theme = "dark"] {
-  @include themeDark;
+  --shadow-color:#F5F5F5;
+  --backgroand-color: #1D1E2C;
+  --cards-color:#24263A;
+  --project-text-color: #DBDFEA;
+  --toogle-round: #DBDFEA;
 }
 
 

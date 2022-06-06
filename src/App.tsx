@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect} from 'react'
+import './styles/app.scss';
+import {useTheme} from "./styles/useTheme";
+import {useAppSelector} from "./store/hooks";
+import {Route, Routes} from "react-router-dom";
+import Layout from "./pages/Layout";
+import Dashboard from "./pages/Dashbourd/Dashboard";
+import Tasks from './pages/Tasks/Tasks';
+
 
 function App() {
+  const {setTheme} = useTheme()
+  const themeValue = useAppSelector(state => state.theme.theme)
+
+  useEffect(() => {
+    setTheme(themeValue)
+  }, [themeValue])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      <Routes>
+        <Route path='/' element={<Layout/>}>
+          <Route index element={<Dashboard/>}/>
+          <Route path='/tasks' element={<Tasks/>}/>
+        </Route>
+      </Routes>
     </div>
   );
 }

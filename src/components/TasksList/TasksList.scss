@@ -1,0 +1,54 @@
+@import "src/styles/variables";
+
+.tasks-list {
+  @include style-cards;
+  width: 400px;
+  min-height: 25%;
+}
+.tasks-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px
+}
+
+.tasks-title {
+  @include titleText;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.tasks-add {
+  width: 23px;
+  height: 23px;
+  position: relative;
+  display: block;
+  border: none;
+  background: none;
+  border-radius: 50%;
+}
+
+.tasks-add::before, .tasks-add::after {
+ @include titleText;
+  position: absolute;
+  content: '';
+  width: 80%;
+  height: 2px;
+  background: $colorSimpleText;
+  transform: rotate(90deg);
+  top: 48%;
+  left: 10%;
+  border-radius: 20%;
+  transition: all 0.5s;
+}
+.tasks-add::after {
+  transform: rotate(180deg);
+}
+.tasks-add:hover::before {
+  transform: rotate(270deg) scale(1.5);
+  background-color: $colorAccent;
+}
+.tasks-add:hover::after {
+  transform: rotate(360deg) scale(1.5);
+  background-color: $colorAccent;
+}

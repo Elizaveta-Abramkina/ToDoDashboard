@@ -1,0 +1,123 @@
+@import 'src/styles/variables';
+
+.arrow {
+  border: solid $colorLight;
+  border-width: 0 2px 2px 0;
+  padding: 3px;
+  display: inline-block;
+}
+
+.right {
+  transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+}
+
+.calendar-buttons {
+  width: 74px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-button {
+  background-color: $colorAccent;
+  border: none;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+
+  &:hover.button-left {
+    box-shadow: 5px 0 8px var(--shadow-color);
+    transform: translate(-5px, 0);
+
+  }
+
+  &:hover.button-right {
+    &:hover {
+      box-shadow: -5px 0 8px var(--shadow-color);
+      transform: translate(5px, 0);
+
+    }
+  }
+}
+
+.calendar-mini {
+  @include style-cards;
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 18px 40px 18px;
+}
+
+.calendar-title-month {
+  @include titleText;
+  font-size: 30px;
+}
+
+.calendar-form {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.calendar-week-days-form {
+  display: flex;
+}
+
+.calendar-week-days {
+  @include titleText;
+  font-size: 14px;
+  font-weight: 600;
+  width: 36px;
+  height: 36px;
+  margin: 0 5px 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar-prev-days {
+  @include calendarText;
+  color: $colorMoreLight;
+  opacity: 40%;
+  width: 36px;
+  height: 36px;
+  margin: 0 5px 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-days {
+  @include calendarText;
+  color: $colorSimpleText;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px 0 5px;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+}
+
+.today {
+  background-color: $colorAccent;
+  color: $colorLight;
+}
+
+.selected {
+  border: 2px solid $colorAccent;
+  border-radius: 50%;
+  color: var(--project-text-color);
+}

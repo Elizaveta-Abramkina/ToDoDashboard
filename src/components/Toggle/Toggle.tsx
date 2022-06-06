@@ -1,68 +1,46 @@
-import React from 'react';
-import styled from "styled-components";
-import {colorDark, colorLight, colorMain, colorSimpleText} from "../styles/vatiables";
+import React, {useEffect, useState} from 'react';
+import './Toggle.scss'
 
-const ToggleLabel = styled.label`
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-  
-  & input {
-    display: none;
-  }
-`
-
-const ToggleInput = styled.input`
-  &:checked + span {
-    background-color: ${colorSimpleText};
-  }
-  &:focus + span {
-    box-shadow: 0 0 1px ${colorMain};
-  }
-  &:checked + span:before {
-    transform: translateX(26px);
-  }
-  
-`
-const ToggleRound = styled.span`
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: ${colorMain};
-  -webkit-transition: .4s;
-  transition: .4s;
-  border-radius: 34px;
-  
-  &:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: ${colorLight};
-    -webkit-transition: .4s;
-    transition: .4s;
-    border-radius: 50%;
-  }
-`
-
+import {changeTheme} from '../../store/theme/themeSlice';
+import {useAppDispatch} from '../../store/hooks';
 
 
 const Toggle = () => {
+  const [input, setInput] = useState(true)
+  const dispatch = useAppDispatch()
 
+  useEffect(() => {
+    const saveTheme = localStorage.getItem('theme')
+    if (saveTheme === 'dark') {
+      setInput(false)
+    }
+    if (saveTheme) {
+      dispatch(changeTheme(saveTheme))
+    }
+  })
 
+  const addTheme = (value: string) => {
+    dispatch(changeTheme(value))
+    localStorage.setItem('theme', value)
+  }
 
-    return (
-        <ToggleLabel>
-            <ToggleInput type='checkbox'/>
-            <ToggleRound/>
-        </ToggleLabel>
-    );
+  const handleChangeTheme = () => {
+    setInput(!input)
+    if (!input) {
+      addTheme('light')
+    } else {
+      addTheme('dark')
+    }
+  }
+
+  return (
+    <label className='toggle-label'>
+      <input type='checkbox' className='toggle-input' checked={input} onChange={() => {
+        handleChangeTheme()
+      }}/>
+      <span className='toggle-round'/>
+    </label>
+  );
 };
 
 export default Toggle;

@@ -1,0 +1,19 @@
+@import 'src/styles/variables';
+
+.header-container {
+  height: 90px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 100%;
+}
+
+.logo-text {
+  @include projectLogoText;
+  margin-left: 8px;
+}

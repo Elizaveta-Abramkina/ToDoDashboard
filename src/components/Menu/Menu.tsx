@@ -1,49 +1,21 @@
 import React from 'react';
-import styled from "styled-components";
-import {border, menuInputText, colorMain, colorSimpleText} from '../styles/vatiables';
-import TasksIcon from "../assets/icons/TasksIcon";
-import HomeIcon from '../assets/icons/HomeIcon';
+import TasksIcon from "../../assets/icons/TasksIcon";
+import HomeIcon from '../../assets/icons/HomeIcon';
+import './Menu.scss'
+import MenuInput from "./atoms/MenuInput";
+import {NavLink} from 'react-router-dom';
 
 
-const MenuContainer = styled.div`
-  padding-top: 10px;
-  width: 250px;
-  border-right: ${border};
-  }
-`
-
-const MenuInput = styled.div`
-  display: flex;
-  margin-top: 38px;
-  color: ${colorSimpleText};
-  fill: ${colorSimpleText};
-  stroke: ${colorSimpleText};
-
-  &:hover {
-    color: ${colorMain};
-    fill: ${colorMain};
-    stroke: ${colorMain};
-  }
-`
-const MenuText = styled.p`
-  ${menuInputText};
-  margin-left: 8px;
-`
 const Menu = () => {
 
-    return (
-        <MenuContainer>
-                <MenuInput>
-                    <HomeIcon/>
-                    <MenuText>Home</MenuText>
-                </MenuInput>
-            <MenuInput>
-                <TasksIcon />
-                <MenuText>Tasks</MenuText>
-            </MenuInput>
-
-        </MenuContainer>
-    );
+  return (
+    <div className='menu-container'>
+      <NavLink to='/' className={({isActive}) => isActive ? 'activeLink' : undefined}><MenuInput icon={HomeIcon()}
+                                                                                                 name='Home'/></NavLink>
+      <NavLink to='/tasks' className={({isActive}) => isActive ? 'activeLink' : undefined}><MenuInput icon={TasksIcon()}
+                                                                                                      name='Tasks'/></NavLink>
+    </div>
+  );
 };
 
 export default Menu;
